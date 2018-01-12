@@ -1,387 +1,174 @@
-@import './_variables.scss';
-@import '../assets/css/scss/md.variables.scss';
-@import '../assets/css/scss/app.variables.scss';
-@import '../assets/css/scss/material-dashboard/mixins/_vendor-prefixes.scss';
+/* styles.css will be extracted to main dist folder and is imported in index.html */
+/* This file is for importing 3rd party styles  */
 
-.app-container {
-  padding-top: $app-header-height;
-  display: block;
-  height: 100%;
-  width: 100%;
+@import 'variables';
+@import '@angular/material/theming';
+
+@import "bootstrap/scss/bootstrap";
+// Plus imports for other components in your app.
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$primary: mat-palette($mat-blue);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+
+@media only screen and (min-width: 800px) {
+  md-sidenav.mat-sidenav-opened, md-sidenav.mat-sidenav-opening {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.08),0px 1px 1px 0px rgba(0, 0, 0, 0.07),0px 1px 3px 0px rgba(0, 0, 0, 0.14) !important;
+  }
 }
 
-:host {
-    display: block;
-    width: 100%;
-    height: $app-header-height;
-  }
-  .navbar-section {
-    width: 100%;
-  }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  .navbar {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $primary-font;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
 
-  .navbar-brand {
-    padding: 0px;
+pre {
+  font-family: $primary-font;
+  font-size: 14px;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
 
-    img {
-      max-height: none !important;
-    }
-  }
-
-  .navbar-nav> .nav-item > .nav-link{
-    border-bottom: solid 3px transparent !important;
-  }
-
-  $nav-link-active-gradient-colour-1: darken($brand-light, 5%);
-  $nav-link-active-gradient-colour-2: lighten($brand-light, 25%);
-
-  .navbar-nav> .nav-item > .nav-link:hover,
-  .navbar-nav> .nav-item > .nav-link:focus,
-  .navbar-nav> .nav-item > .nav-link.active {
-    border-bottom: 3px solid transparent;
-    -moz-border-image: -moz-linear-gradient(left, $brand-primary 0%, $brand-info 100%);
-    -webkit-border-image: -webkit-linear-gradient(left, $brand-primary 0%, $brand-info 100%);
-    border-image: linear-gradient(to right, $brand-primary 0%, $brand-info 100%);
-    border-image-slice: 1;
-  }
-
-  /*
-  .navbar {
-    border-bottom: 1px solid #d2def0 !important;
-  }
+/**
+  * Basic styles from Material Design Lite for HTML elements
   */
-  #button-toggle-collapse {
-    width: 36px;
-    height: 30px;
-    margin-left: 8px;
-    margin-top:13px;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
-    cursor: pointer;
-  }
+  h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0; }
 
-  #button-toggle-collapse span {
-    display: block;
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  font-family: $primary-font;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  opacity: 0.54;
+  font-size: 0.6em; }
+
+h1 {
+  font-family: $primary-font;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-top: 24px;
+  margin-bottom: 24px; }
+
+h2 {
+  font-family: $primary-font;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 48px;
+  margin-top: 24px;
+  margin-bottom: 24px; }
+
+h3 {
+  font-family: $primary-font;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 40px;
+  margin-top: 24px;
+  margin-bottom: 24px; }
+
+h4 {
+  font-family: $primary-font;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 24px;
+  margin-bottom: 16px; }
+
+h5 {
+  font-family: $primary-font;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-top: 24px;
+  margin-bottom: 16px; }
+
+h6 {
+  font-family: $primary-font;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  margin-top: 24px;
+  margin-bottom: 16px; }
+
+p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  margin-bottom: 0; }
+
+a {
+  font-weight: 500; }
+
+blockquote {
+  font-family: $primary-font;
+  position: relative;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.35;
+  letter-spacing: 0.08em; }
+  blockquote:before {
     position: absolute;
-    height: 4px;
-    width: 100%;
-    background: grey;
-    border-radius: 4px;
-    opacity: 1;
-    left: 0;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: .25s ease-in-out;
-    -moz-transition: .25s ease-in-out;
-    -o-transition: .25s ease-in-out;
-    transition: .25s ease-in-out;
-  }
+    left: -0.5em;
+    content: '“'; }
+  blockquote:after {
+    content: '”';
+    margin-left: -0.05em; }
 
-  #button-toggle-collapse span:nth-child(1) {
-    top: 0px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
-  }
+mark {
+  background-color: #f4ff81; }
 
-  #button-toggle-collapse span:nth-child(2) {
-    top: 9px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
-  }
+dt {
+  font-weight: 700; }
 
-  #button-toggle-collapse span:nth-child(3) {
-    top: 18px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
-  }
+address {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  font-style: normal; }
 
-  #button-toggle-collapse.open span:nth-child(1) {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    top: -3px;
-    left: 8px;
-  }
-
-  #button-toggle-collapse.open span:nth-child(2) {
-    width: 0%;
-    opacity: 0;
-  }
-
-  #button-toggle-collapse.open span:nth-child(3) {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    top: 21px;
-    left: 8px;
-  }
-
-  .card {
-    position: relative;
-    overflow: hidden;
-    transform: translateZ(0);
-
-    img:not(.activated) {
-      opacity: 0.6;
-      text-shadow: 4px 4px 2px black;
-    }
-  }
-  .card::before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: transparent;
-    transition: background .35s ease-out;
-  }
-  .card:hover::before {
-    background: rgba(0, 0, 0, .5);
-  }
-  .card-media {
-    display: block;
-    min-width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  .card-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0;
-    color: white;
-    transform: translateY(100%);
-    transition: transform .35s ease-out;
-  }
-  .card:hover .card-overlay {
-    //transform: translateY(0);
-  }
-  .card-media:hover  {
-
-  }
-  .card-overlay-title {
-    margin: 0;
-    padding-top: 50%;
-    padding-bottom: 50%;
-    transform: translateY( calc(-100%) ); /* +10px overlay padding */
-    transition: transform .35s ease-out;
-    text-shadow: 1px 2px 3px rgba(0,0,0,0.75);
-  }
-  .card:hover .card-overlay-title {
-    //transform: translateY( calc(-100%) );
-    //-webkit-transform:scale(1.1); /* Safari and Chrome */
-    //-moz-transform:scale(1.1); /* Firefox */
-    //-ms-transform:scale(1.1); /* IE 9 */
-    //-o-transform:scale(1.1); /* Opera */
-    //transform:scale(1.1);
-  }
-
-
-
-  #main-image {
-    height: 500px;
-    width: 100%;
-    object-fit: cover;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #image-row {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #text-container {
-    position: absolute;
-    bottom: 16%;
-    display: block;
-    left: 20%;
-    right: 20%;
-  }
-
-  #main-text {
-    font-size: 60px;
-  }
-
-  #link-site {
-    padding-right: 0px;
-  }
-
-  @media screen and (max-width: 1400px) {
-    #text-container {
-      data-screen-type: "desktop";
-      left: 20%;
-      right: 20%;
-      bottom: 16%;
-    }
-    #main-text {
-      font-size: 60px;
-    }
-  }
-  @media screen and (max-width:700px) {
-    #text-container {
-      data-screen-type: "tablet";
-      left: 4%;
-      right: 4%;
-      bottom: 3%;
-    }
-    #main-text {
-      font-size: 60px;
-    }
-
-    #main-image {
-      height: 360px !important;
-    }
-  }
-  @media screen and (max-width:350px) {
-    #text-container {
-      data-screen-type: "phone";
-      left: 5px;
-      right: 5px;
-      bottom: 0%;
-    }
-    #main-text {
-      font-size: 45px;
-    }
-
-    .navbar-brand {
-      padding:0;
-    }
-
-      #main-image {
-        height: 360px !important;
-      }
-  }
-
-
-  @media screen and (max-width:1200px) {
-    #main-image {
-      height: 500px;
-    }
-
-    #image-row {
-      min-height: 500px;
-      max-height: 500px;
-    }
-  }
-
-  @media screen and (max-width:700px, 350px) {
-    #main-image {
-      height: 500px;
-    }
-
-    #image-row {
-      min-height: 350px;
-      max-height: 350px;
-    }
-  }
-
-  .image_container {
-    max-width: 100%;
-    height: 100%;
-    position: relative; /* Set as position relative to the IMG will move relative to this container */
-    overflow: hidden;
-  }
-
-  /*#image_container img {*/
-  /*max-width: 100%;*/
-
-  /*position:absolute;*/
-
-  /*}*/
-
-  /*.background {*/
-  /*height: 500px;      !* equals max image height *!*/
-  /*border: 1px solid red;*/
-  /*white-space: nowrap;*/
-
-  /*text-align: center; margin: 1em 0;*/
-  /*}*/
-
-  /*.helper {*/
-  /*display: inline-block;*/
-  /*height: 100%;*/
-  /*vertical-align: middle;*/
-  /*}*/
-
-  /*.background {*/
-  /*margin:0 auto;*/
-  /*text-align:center;*/
-  /*}*/
-
-
-.search-input-text {
-    width: 40%;
-  }
-
-  .search-input-sport {
-    width: 40%;
-  }
-
-  div.centre-h
-  {
-    //background-color: plum;
-    display: block;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @media screen and (max-width: 1400px) {
-    div.centre-h {
-      data-screen-type: "desktop";
-  }
-  }
-  @media screen and (max-width: 700px) {
-    div.centre-h {
-      data-screen-type: "tablet";
-    }
-  }
-  @media screen and (max-width:300px) {
-    div.centre-h {
-      data-screen-type: "phone";
-    }
-
-    .search-box {
-        height: 325px;
-    }
-  }
-
-  @media screen and (max-width:700px, 300px) {
-    #image-row {
-      min-height: 500px;
-      max-height: 500px;
-    }
-  }
-
-  div.centre-v
-  {
-    //background-color: yellow;
-    display: block;
-    text-align: left;
-    @include vertical-align();
-  }
+ul, ol {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0; }

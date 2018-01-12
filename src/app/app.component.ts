@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TransferState } from '../modules/transfer-state/transfer-state';
+
 import { views } from './app-nav-views';
-import { Logger, LoggingService } from './core/log';
 import { MOBILE } from './services/constants';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 @Component({
   selector: 'my-app',
@@ -20,17 +19,11 @@ export class AppComponent implements OnInit {
   sideNavMode = MOBILE ? 'over' : 'side';
   views = views;
 
-  log: Logger;
-
   constructor(
     private cache: TransferState,
     public route: ActivatedRoute,
-    loggingService: LoggingService,
-    angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
     public router: Router
-  ) {
-    this.log = loggingService.getLogger('App');
-  }
+  ) { }
 
   ngOnInit() {
     this.cache.set('cached', true);

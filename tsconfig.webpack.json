@@ -16,7 +16,6 @@
     ]
   },
   "exclude": [
-    "node_modules",
     "compiled",
     "e2e/**/*.ts",
     "src/server.ts",
@@ -30,5 +29,10 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "atom": { "rewriteTsconfig": false },
+  "include": [
+    "src/**/*",
+    "node_modules/ngx-responsive/*"
+  ]
 }
+  
